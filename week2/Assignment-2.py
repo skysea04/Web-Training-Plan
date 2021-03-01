@@ -41,7 +41,7 @@ avg({
 # 要求三
 def maxProduct(nums):
     # 請用你的程式補完這個函式的區塊
-    max = 0
+    max = -9999999999
     length = len(nums)
     for i in range(length):
         for j in range(i + 1, length):
