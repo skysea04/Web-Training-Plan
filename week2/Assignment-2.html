@@ -56,11 +56,14 @@
     //要求三
     function maxProduct(nums){
         // 請用你的程式補完這個函式的區塊
-        let max = -9999999999;
         const len = nums.length;
+        let max;
         for(let i = 0; i < len; i++){
             for(let j = i + 1; j < len; j++){
                 let product = nums[i] * nums[j];
+                if(!max){
+                    max = product;
+                }
                 if(product > max){
                     max = product;
                 }
