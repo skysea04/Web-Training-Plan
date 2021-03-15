@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}歡迎，請登入{% endblock %}
+
+{%block header%}歡迎光臨，請輸入帳號密碼{% endblock %}
+
+{% block content%}
+<div class="container">
+    <form action="{{url_for('signin')}}" method="POST">
+        <h3 class="form-title">登入系統</h3>
+        <div class="form-item">
+            <label for="account">帳號</label>
+            <input type="text" name="account">
+        </div>
+        <div class="form-item">
+            <label for="password">密碼</label>
+            <input type="password" name="password">
+        </div>
+        <div class="form-submit">
+            <button type="submit">登入</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
