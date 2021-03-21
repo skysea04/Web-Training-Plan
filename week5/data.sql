@@ -34,6 +34,16 @@ CREATE TABLE `message` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `message`
+--
+
+LOCK TABLES `message` WRITE;
+/*!40000 ALTER TABLE `message` DISABLE KEYS */;
+INSERT INTO `message` VALUES (1,1,'宇軒真的帥','2021-03-22 03:12:55'),(2,5,'彭彭老師最讚','2021-03-22 03:12:55'),(3,1,'快三點了還不睡','2021-03-22 03:12:55'),(4,3,'一閃一閃亮晶晶','2021-03-22 03:12:55'),(5,2,'明天開會不准睡','2021-03-22 03:12:55'),(6,2,'嘎拉嘎拉','2021-03-22 03:12:55'),(7,1,'不管啦我今天就是要把作業搞完','2021-03-22 03:12:55');
+/*!40000 ALTER TABLE `message` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user`
 --
 
@@ -49,6 +59,16 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'宇軒','ply','ply','2021-03-22 03:12:31'),(2,'阿管','abc','123','2021-03-22 03:12:31'),(3,'阿秋','def','456','2021-03-22 03:12:31'),(4,'小郭','ghi','789','2021-03-22 03:12:31'),(5,'小彭','xyz','1357','2021-03-22 03:12:31');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -59,4 +79,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-22  3:25:23
+-- Dump completed on 2021-03-22  4:39:45
