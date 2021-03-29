@@ -9,6 +9,11 @@ db = mysql.connector.connect(
 
 cursor = db.cursor()
 
+##  select函式使用方法：看要找什麼就在參數寫x='x' 
+##  範例
+##  username = 'ply'
+##  password = 'ply'
+##  db_select(username=username, password=password)
 def db_select(**kargs):
     sql='SELECT * FROM user WHERE '
     for key in kargs:
@@ -21,8 +26,9 @@ def db_select(**kargs):
     userData = dict(zip(cursor.column_names, user))
     return userData
 
-# db_select(name=name, username=username)
-
+##  insert函式使用方法：看要找什麼就在參數寫x='x'
+##  範例
+##  db_insert(name='澎澎', username='ply', password='ply')
 def db_insert(**kargs):
     sql ='INSERT INTO user '
     column = '('
