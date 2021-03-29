@@ -15,7 +15,7 @@ cursor = db.cursor()
 def db_select(**kargs):
     sql='SELECT * FROM user WHERE '
     for key in kargs:
-        sql += (key + '=\"' + kargs[key] +'\" and ')
+        sql += f"{ key } = { kargs[key] } and "
     sql = sql[:-5]   
     cursor.execute(sql)
     user = cursor.fetchone()
@@ -34,7 +34,7 @@ def db_insert(**kargs):
 
     for key in kargs:
         column += key + ','
-        value += '\"' + kargs[key] + '\"' + ','
+        value += f"\'{kargs[key]}\',"
     
     column = column[:-1] + ')'
     value = value[:-1] + ')'
