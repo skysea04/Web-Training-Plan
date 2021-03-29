@@ -15,7 +15,7 @@ cursor = db.cursor()
 def db_select(**kargs):
     sql='SELECT * FROM user WHERE '
     for key in kargs:
-        sql += f"{ key } = { kargs[key] } and "
+        sql += f"{ key } = \'{ kargs[key] }\' and "
     sql = sql[:-5]   
     cursor.execute(sql)
     user = cursor.fetchone()
