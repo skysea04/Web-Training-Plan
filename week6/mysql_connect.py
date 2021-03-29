@@ -11,9 +11,7 @@ cursor = db.cursor()
 
 ##  select函式使用方法：看要找什麼就在參數寫x='x' 
 ##  範例
-##  username = 'ply'
-##  password = 'ply'
-##  db_select(username=username, password=password)
+##  db_select(username='ply', password='ply')
 def db_select(**kargs):
     sql='SELECT * FROM user WHERE '
     for key in kargs:
