@@ -70,20 +70,22 @@ def error():
 # 查詢會員資料api
 @app.route('/api/users')
 def api_users():
-    username = request.args.get('username')
-    user = db_select(username=username)
-    if user:
-        data = {'data':{
-            'id': user['id'],
-            'name': user['name'],
-            'username': user['username']
-        }}
-        return data
-    else:
-        data = {
-            'data': None
-        }
-        return data
+    if 'username' in session:
+        username = request.args.get('username')
+        user = db_select(username=username)
+        if user:
+            data = {'data':{
+                'id': user['id'],
+                'name': user['name'],
+                'username': user['username']
+            }}
+            return data
+        else:
+            data = {
+                'data': None
+            }
+            return data
+    return redirect(url_for('index'))
 
 # 修改會員姓名api
 @app.route('/api/user', methods=['POST'])
@@ -95,9 +97,7 @@ def api_user():
         val = (data['name'], session['username'])
         cursor.execute(sql, val)
         db.commit()
-        # print(data['name'], session['username'])
         user = db_select(name=data['name'], username=session['username'])
-        # print(user)
         if user:
             data = {'ok': True}
             return data
