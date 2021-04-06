@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %}登入成功{% endblock %}
+
+{%block header%}歡迎光臨，這是會員頁面{% endblock %}
+
+{% block content%}
+<div class="container">
+    <p class="log">{{name}}，歡迎登入系統</p>
+    <p class="log"><a href="/signout">登出系統</a></p>
+</div>
+<form class="container search-user">
+    <h3>查詢會員姓名</h3>
+    <div>
+        <input type="text">
+        <button type="submit">查詢</button>
+    </div>
+    <p></p>
+</form>
+<form class="container change-username">
+    <h3>更新我的姓名</h3>
+    <div>
+        <input type="text">
+        <button type="submit">更新</button>
+    </div>
+    <p></p>
+</form>
+{% endblock %}
+
+{% block script %}
+<script>
+    const userSearchForm = document.querySelector('.search-user')
+    const changeUsernameForm = document.querySelector('.change-username')
+
+    // 查詢會員姓名
+    function searchUser(e){
+        e.preventDefault()
+        const search = this.querySelector('input').value
+        console.log(search.value)
+        const searchResult = this.querySelector('p')
+        let url = '/api/users?username=' + search
+
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                const name = data['data']['name']
+                const username = data['data']['username']
+                searchResult.innerText = `${name}(${username})`
+            })
+            .catch(fail => {
+                searchResult.innerText = '無此使用者'
+            })
+    }
+    
+    // 更新會員姓名
+    function changeUsername(e){
+        e.preventDefault()
+        const url = '/api/user'
+        const newName = this.querySelector('input').value
+        const changeResult = this.querySelector('p')
+        const data = {
+            'name': newName
+        }
+        fetch(url, {
+            method: 'POST',
+            headers:{
+                'Contnet-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data['ok']){
+                changeResult.innerText = '更新成功'
+                const helloUser = document.querySelector('.log')
+                helloUser.innerText = `${newName}，歡迎登入系統`
+            }else{
+                changeResult.innerText = '更新失敗'
+            }
+        })
+    }
+
+    userSearchForm.addEventListener('submit', searchUser)
+    changeUsernameForm.addEventListener('submit', changeUsername)
+
+</script>
+
+{% endblock %}
