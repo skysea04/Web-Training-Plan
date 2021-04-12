@@ -52,7 +52,7 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET character_set_client = utf8 */;
 /* 
 由於在app.py中會使用(where username='x') (where username='x' AND password='x') 
-此2種select篩選方式，所以創建了 usr_pwd_index 這個secondary index讓搜尋的時間複雜度變成O(log n)
+此2種select篩選方式，所以創建了 usr_index 這個secondary index讓搜尋的時間複雜度變成O(log n)
 */
 CREATE TABLE `user` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '獨立編號',
