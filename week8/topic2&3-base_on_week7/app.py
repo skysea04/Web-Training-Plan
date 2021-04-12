@@ -21,7 +21,9 @@ def signup():
     name = request.values['name']
     username = request.values['username']
     password = request.values['password']
-
+    if(name=='' or username=='' or password == ''):
+        message = '沒輸入內容還敢進來 調皮喔'
+        return redirect(url_for('error', message = message))
     user = db_select(username=username)
     ##如果使用者已存在，回傳錯誤頁面;若不存在則註冊帳號
     if user:
@@ -36,7 +38,9 @@ def signup():
 def signin():
     username = request.values['username']
     password = request.values['password']
-
+    if(username=='' or password == ''):
+        message = '沒輸入內容還敢進來 調皮喔'
+        return redirect(url_for('error', message = message))
     user = db_select(username=username, password=password)
     # 如果有該user，給session後重新導向到會員頁
     if user:
