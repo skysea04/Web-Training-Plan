@@ -50,7 +50,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-/* 增加了3個secondary index 讓InnoDB搜尋可以更快( O(log n) ) */
+/* 增加了1個secondary index 讓InnoDB搜尋可以更快( O(log n) ) */
 CREATE TABLE `user` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '獨立編號',
   `name` varchar(255) NOT NULL COMMENT '姓名',
@@ -58,9 +58,7 @@ CREATE TABLE `user` (
   `password` varchar(255) NOT NULL COMMENT '帳戶密碼',
   `time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '註冊時間',
   PRIMARY KEY (`id`),
-  KEY `usr_index` (`username`),
-  KEY `usr_pwd_index` (`username`,`password`),
-  KEY `name_usr_index` (`name`,`username`)
+  KEY `usr_index` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
