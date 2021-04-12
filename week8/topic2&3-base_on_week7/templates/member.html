@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}登入成功{% endblock %}
+
+{%block header%}歡迎光臨，這是會員頁面{% endblock %}
+
+{% block content%}
+<div class="container">
+    <p class="log">{{name}}，歡迎登入系統</p>
+    <p class="log"><a href="/signout">登出系統</a></p>
+</div>
+<form class="container search-user">
+    <h3>查詢會員姓名</h3>
+    <div>
+        <input type="text">
+        <button type="submit">查詢</button>
+    </div>
+    <p></p>
+</form>
+<form class="container change-username">
+    <h3>更新我的姓名</h3>
+    <div>
+        <input type="text">
+        <button type="submit">更新</button>
+    </div>
+    <p></p>
+</form>
+{% endblock %}
+
+{% block script %}
+<script src="../static/member.js"></script>
+{% endblock %}

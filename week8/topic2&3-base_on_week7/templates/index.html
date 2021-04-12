@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}歡迎，請登入{% endblock %}
+
+{%block header%}歡迎光臨，請輸入帳號密碼{% endblock %}
+
+{% block content%}
+<div class="container">
+    <form class="register" action="{{url_for('signup')}}" method="POST">
+        <h3 class="form-title">註冊帳號</h3>
+        <div class="form-item">
+            <label for="name">姓名</label>
+            <input type="text" name="name" required>
+        </div>
+        <div class="form-item">
+            <label for="username">帳號</label>
+            <input type="text" name="username" required>
+        </div>
+        <div class="form-item">
+            <label for="password">密碼</label>
+            <input type="password" name="password" required>
+        </div>
+        <div class="form-submit">
+            <button type="submit">註冊</button>
+        </div>
+    </form>
+</div>
+
+<div class="container">
+    <form class="login" action="{{url_for('signin')}}" method="POST">
+        <h3 class="form-title">登入系統</h3>
+        <div class="form-item">
+            <label for="username">帳號</label>
+            <input type="text" name="username" required>
+        </div>
+        <div class="form-item">
+            <label for="password">密碼</label>
+            <input type="password" name="password" required>
+        </div>
+        <div class="form-submit">
+            <button type="submit">登入</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{%block script%}
+{% endblock %}
