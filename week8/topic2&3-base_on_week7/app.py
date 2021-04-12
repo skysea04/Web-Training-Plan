@@ -101,7 +101,7 @@ def api_user():
         val = (data['name'], session['username'])
         cursor.execute(sql, val)
         db.commit()
-        user = db_select(username=session['username'], name=data['name'])
+        user = db_select(username=session['username'])
         if user:
             data = {'ok': True}
             return data
