@@ -61,7 +61,7 @@ CREATE TABLE `user` (
   `password` varchar(255) NOT NULL COMMENT '帳戶密碼',
   `time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '註冊時間',
   PRIMARY KEY (`id`),
-  KEY `usr_pwd_index` (`username`,`password`)
+  KEY `usr_index` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
