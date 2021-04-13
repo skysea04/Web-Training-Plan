@@ -1,0 +1,40 @@
+html{
+    box-sizing: border-box;
+}
+*, *::after, *::before{
+    box-sizing: inherit;
+    margin: 0;
+}
+
+header{
+    background-color: #1D3446;
+    width: 100%;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.container{
+    width: 300px;
+    margin: 50px auto;
+    text-align: center;  
+}
+.container form{
+    background-color: rgb(206, 206, 206);
+    border-radius: 10px;
+    padding: 10px;
+}
+.form-title{
+    margin: 10px;
+}
+.form-item{
+    margin-bottom: 5px;
+}
+.form-submit{
+    margin-top: 20px;
+}
+
+.log{
+    font-size: 1.5rem;
+    margin: 10px;
+}

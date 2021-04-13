@@ -10,10 +10,8 @@ app.secret_key = os.urandom(16).hex()
 @app.route('/')
 def index():
     # 如果有名為user的cookie，驗證value是否為使用者，否則返回主頁
-    if request.cookies.get('user'):
-        cookie_value = request.cookies.get('user')
-        if check_password_hash(cookie_value, 'test'):
-            return redirect(url_for('member'))
+    if request.cookies.get('user') and request.cookies.get('user_hash'):
+        return redirect(url_for('member'))
     return render_template('index.html')
 
 @app.route('/signin', methods=['GET', 'POST'])
@@ -24,16 +22,18 @@ def signin():
         # 將user coookie的value設為test的雜湊值，並將cookie傳給client
         res = make_response(redirect(url_for('member')))
         user_hash = generate_password_hash('test')
-        res.set_cookie(key='user', value=user_hash, expires=time.time() + 24*3600 )
+        res.set_cookie(key='user', value='test', expires=time.time() + 24*3600 )
+        res.set_cookie(key='user_hash', value=user_hash, expires=time.time() + 24*3600 )
         return res
     return redirect(url_for('error'))
 
 @app.route('/member/')
 def member():
     # 如果有名為user的cookie，驗證value是否為使用者，否則返回主頁
-    if request.cookies.get('user'):
-        cookie_value = request.cookies.get('user')
-        if check_password_hash(cookie_value, 'test'):
+    if request.cookies.get('user') and request.cookies.get('user_hash'):
+        user_cookie = request.cookies.get('user')
+        user_hash_cookie = request.cookies.get('user_hash')
+        if check_password_hash(user_hash_cookie, user_cookie):
             return render_template('member.html')
     return redirect(url_for('index'))
 
