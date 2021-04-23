@@ -12,8 +12,8 @@ cursor = db.cursor()
 ##  select函式使用方法：看要找什麼就在參數寫x='x' 
 ##  範例
 ##  db_select(username='ply', password='ply')
-def db_select(**kargs):
-    sql='SELECT * FROM user WHERE '
+def db_select(table, **kargs):
+    sql=f'SELECT * FROM {table} WHERE '
     for key in kargs:
         sql += f"{ key } = \'{ kargs[key] }\' and "
     sql = sql[:-5]   
@@ -27,8 +27,8 @@ def db_select(**kargs):
 ##  insert函式使用方法：看要找什麼就在參數寫x='x'
 ##  範例
 ##  db_insert(name='澎澎', username='ply', password='ply')
-def db_insert(**kargs):
-    sql ='INSERT INTO user '
+def db_insert(table, **kargs):
+    sql =f'INSERT INTO {table} '
     column = '('
     value = '('
 
